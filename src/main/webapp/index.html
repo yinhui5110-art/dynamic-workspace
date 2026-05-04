@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>HTML이다~</title>
+</head>
+<body>
+	<h1>웰컴파일이다~~</h1>
+	<!-- 
+		1) 새 워크스페이스 생성 후 이클립스로 열기
+		
+		2) 작업 환경 구성 
+			2-1) 보여질 화면요소를 구성한다
+			
+			2-2) 서버 실행환경 구성[window - Preferences](Server - Runtime Enviroments)
+			이클립스 상에서 서버를 실행할 수 있도록 실행환경을 연동하는 과정
+			Add 버튼 클릭 - > 설치한 ApacheTomcat과 동일한 버전을 선택 -> Next버튼 누르기
+			-> Browse버튼 클릭  -> 설치한 톰캣 폴더까지 이동(bin폴더가 보여야함) -> Finish버튼 클릭
+			
+		
+		3) 서버 생성하기[Servers]
+		
+		3-1) [Server] -[New] - [Server]
+		
+		3-2) 2-2번 작업을 하고 왔다면 기본적으로 Runtime이 잡혀있다
+		
+		3-3)finish버튼 클릭
+		
+		3-4) 서버 세팅하기(만들어진 서버를 더블 클릭)
+		
+			3-4-1) 왼쪽 하단에 ServerOptions탭이 있다 -> Serve Module Publishing 체크박스를 체크
+				=> 체크를 안하면 file upload /  download 경로 지정이 운영체제 상 숨길폴더로 지정
+				
+				3-4-2) 포트번호 충돌을 방지하기 위해서 포트번호 재설정 -> 작업이 끝나면 반드시 저장
+				
+		4) Dynamic Web Project만들기[Project Explorer - new]
+		
+		4-1) 프로잭트명 작성하기 - next버튼 클릭
+		
+		4-2)default output folder 경로 재설정:
+		src/main/webapp/WEB-INF/classes
+		=> classes 폴더 안에 컴파일이 끝난 .classes파일이 들어간다
+		WEB-INF안에 만들어두지 않으면 외부에서 접근이 가능하기 때문에 보안상 취약
+		-next버튼 클릭
+		
+		4_3) Context root : 애플리케이션만의 고유한 별칭으로 만들어준다(기본값 :프로젝트 명 )
+		재정의 해서 쓰는것이 일반적이여서 실제로 매우 자주 바뀐다
+		=> 하나의 서버로 여러 개의 애플리케이션을 구동할 수 있다
+		고유한 이름을 통해 애플리케이션에 요청을 보내는 경로로 사용할 수 있다
+		Content Directory : 실제 베포되는 폴더(서버에 올라가는 폴더)의 최상위 폴더명
+		=> 건들지 않는다
+		
+		Generate web.xml deployment descriptor : 기본적으로 체크 X
+		=> 현재 애플리케이션의 정보를 담는 파일 => 절대 바꿀 일 없다 => 안만들어도 무방하다.
+		
+		Finish 버튼 클릭
+	
+	 -->
+	 
+	 <hr>
+	 
+	 <h2>web을 시작해보기~~</h2>
+	 
+	 <h3>* Servlet</h3>
+	 
+	 <pre>
+	 		서블릿이란?
+	 		
+	 		자바를 이요해서 웹을 만들기 위해 사용하는 기술
+	 		웹서비스를 위한 자바 "인터페이스/클래스"	 
+	 		- 사용자의 요청을 받아서 처리하고 그에 해당하는 응답데이터를 만들어서
+	 		다시 사용자에게 전송해주는 역할(당분간은 컨트롤러로 사용할 예정)
+
+			-Java로 동적인 페이지를 구현할 수 있게 해주는 서버 측 프로그램(명세)	
+	 </pre>
+	 
+	 <a href="http://localhost:8088/first/views/request_get.html">GET방식으로 가자~~</a>
+	 <a href="views/request_get.html">두 번 째 방법</a>
+	 
+	 
+	 
+
+
+</body>
+</html>
