@@ -1,0 +1,98 @@
+package com.kh.first.controller;
+
+import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+
+@WebServlet("/post.do")
+public class RequestPostServlet extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+       
+   
+    public RequestPostServlet() {
+        super();
+    }
+
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		//System.out.println("POST방식 요청 시에도 doGet()를 호출!");
+		
+		// 1. 값뽑고 가공하기
+		// 2. 요청처리 --> Service단 호출
+		// 3. 결과값반환(응답화면 지정)
+		
+		
+		// post방식의 요청 일 경우 인코딩 설정이 ISO-8859-1방식으로 바뀌기 때문에
+		// 인코딩 방식을 변경해주지 않으면 한글의 경우 다 깨진다
+		request.setCharacterEncoding("UTF-8");
+		
+		
+		String name = request.getParameter("name");
+		System.out.println(name);
+		
+		int age = Integer.parseInt (request.getParameter("age"));
+		System.out.println(age);
+		
+		String gender = request.getParameter("gender");
+		System.out.println(gender);
+		
+		String city = request.getParameter("city");
+		System.out.println(city);
+		
+		double height = Double.parseDouble(request.getParameter("height"));
+		System.out.println(height);
+		
+		String[] foods = request.getParameterValues("food");
+		if(foods != null) {
+			System.out.println(String.join("-", foods));
+		}
+		
+		// 2단계
+		// 요청 처리
+		// service -> DAO -> DB
+		// List / DT)(VO) / int
+		
+		// 3단계 응답데이터
+		//3_1. JSP를 이용해서 응답 페이지 만들기
+		
+		//JSP(Java Server Page -> 2017년도 까지,
+		//	  Jakarta Server Page -> 2017년도 부터)
+		//Java기반의 서버사이드 웹 페이지 생성 기술
+		// 특징 : ★서버에서 실행되어 동적으로 웹페이지를 생성할 수 있음★
+		
+		//------------------------------------------------------
+		// 응답화면(JSP)에서 필요한 데이터를 넘겨줄 것(request에 담아서)
+		// attribute => 키 랑 벨류 세트로 묶어서 값을 담을 수 있다
+		// request.setAttribute("키","벨류");
+		//Object 0 = 1; 다형성
+		
+		request.setAttribute("name", name);
+		request.setAttribute("age",age);
+		request.setAttribute("gender",gender);
+		request.setAttribute("height", height);
+		request.setAttribute("city",city);
+		request.setAttribute("foods",foods);
+		request.setAttribute("msg","성공 축하");
+		
+		// 응답 데이터 생성 과정을 JSP에게 위임(배정한다-디스패쳐)
+		// 배정 시 필요한 객체 : RequestDispatcher
+		// request.getRequestDispatcher("JSP파일의 경로");
+		
+		// / 로 시작시 webapp/을 의마한다 
+		RequestDispatcher view = request.getRequestDispatcher("/views/response_page.jsp");
+		view.forward(request, response);
+			
+		
+	}
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		//System.out.println("먼저 얘를 호출한 뒤에!");
+		doGet(request, response);
+	}
+
+}

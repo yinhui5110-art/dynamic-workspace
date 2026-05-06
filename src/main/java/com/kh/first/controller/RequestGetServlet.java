@@ -36,7 +36,7 @@ public class RequestGetServlet extends HttpServlet {
 		 * 2. 요청처리(Service단 호출)
 		 * 3. 결과값 반환(응답화면 지정) /controller에서 view로 결과값 반환한다
 		 * 
-		 * view에서 Get방식으로 요청할 시 doGet()가 호출된다!!
+		 * view에서 Get방식으로 요청할 시 doGet() 호출된다!!
 		 * 
 		 */
 		/*
@@ -160,9 +160,9 @@ public class RequestGetServlet extends HttpServlet {
 			pw.println("<h1>요청처리에 성공했습니다</h1>");
 			
 			pw.printf("<span id='name'>%s</span>님은<br>",name);
-			pw.printf("<span id='age'>%d</span>살이며<br>",age);
+			pw.printf("<span id='age'>%d</span>살이며,<br>",age);
 			pw.printf("<span id='city'>%s</span>에 삽니다.<br>",city);
-			pw.printf("<span id='height'>%.1f</span><br><br>",height);
+			pw.printf("키는 <span id='height'>%.1f</span><br><br>",height);
 			
 		
 			pw.print("성별은 ");
@@ -190,7 +190,7 @@ public class RequestGetServlet extends HttpServlet {
 			pw.println("</script>");	
 		
 		
-		pw.println("</body>");
+			pw.println("</body>");
 		pw.println("</html>");
 		
 		
